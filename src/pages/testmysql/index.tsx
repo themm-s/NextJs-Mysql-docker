@@ -17,7 +17,10 @@ export default function TestMysql() {
       })
     })
       .then(res => res.json())
-      .then(data => setUser(data));
+      .then(data => {
+        setUser(data);
+        console.log(data);
+      });
   };
   return (
     <>

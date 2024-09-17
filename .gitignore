@@ -13,6 +13,8 @@
 /.next/
 /out/
 
+initbd.js
+
 # production
 /build
 

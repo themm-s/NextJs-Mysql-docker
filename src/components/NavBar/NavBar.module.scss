@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px;
+  background-color: rgba(51, 51, 51, .7);
+  color: #fff;
+  font-size: 1.5rem;
+
+  .items {
+    display: flex;
+    margin: auto 10px;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+
+    h1 {
+      font-weight: 700;
+      color: #6ff3ff;
+      border: 1px solid #fff;
+      padding: 3px;
+      border-radius: 13px;
+    }
+
+    button {
+      font-size: medium;
+      &:hover {
+        color: #ababab;
+        transition: all .6s;
+      }
+    }
+  }
+}
