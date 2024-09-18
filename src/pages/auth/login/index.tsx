@@ -2,9 +2,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
-// TODO: Добавить контекст для передачи состояния!!! Сейчас сделано неправильно
-
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,8 +19,9 @@ const Login = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
+      const data = await res.json();
       if (res.ok) {
+        localStorage.setItem('user', JSON.stringify(data.user));
         router.push('/');
         return;
       }
@@ -33,7 +31,6 @@ const Login = () => {
         return;
       }
 
-      const data = await res.json();
       console.log(data);
     } catch (err) {
       console.error('Произошла ошибка:', err);

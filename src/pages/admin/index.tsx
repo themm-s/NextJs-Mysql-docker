@@ -6,12 +6,12 @@ import Link from "next/link";
 export default function AdminPanel({ data }: { data: TUser[]; }) {
   return (
     <section className="container mx-auto backdrop-blur-sm h-screen w-2/4 text-gray-300 flex flex-col gap-4 text-center">
-      <Link href='/' className="absolute ml-3 text-lg font-normal">Назад</Link>
+      <Link href='/' className="absolute mx-3 my-1 text-lg font-normal">Назад</Link>
       <h1 className="text-3xl font-bold font-serif">Зарегистрированные пользователи</h1>
       <ul className="flex flex-col gap-4 text-lg">
         {data.map((item: TUser) => (
           <React.Fragment key={item.user_id}>
-            <li className="rounded p-3" key={item.user_id}>
+            <li className="rounded p-3 bg-blue-400 bg-opacity-15" key={item.user_id}>
               <p>{item.email} - {item.username}</p>
               <div className="flex justify-center">
                 <p>

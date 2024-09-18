@@ -11,7 +11,7 @@ const Registration = () => {
   const navigate = useRouter();
   const sendRequest = async (e: any) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    console.log(e.target[0].value, e.target[1].value, e.target[2].value);
     const res = await fetch('/api/auth/registration', {
       method: 'POST',
       headers: {
@@ -24,9 +24,12 @@ const Registration = () => {
       })
     });
 
+    const data = await res.json();
     if (res.status === 200) {
-      await navigate.push('/');
-      await navigate.reload();
+      localStorage.setItem('user', JSON.stringify(data.user));
+      navigate.push('/');
+      revalidatePath('/');
+      return;
     }
 
     if (res.status === 400) {
@@ -40,7 +43,7 @@ const Registration = () => {
       <h1 className="text-3xl">Регистрация</h1>
       <form className="flex flex-col gap-6" onSubmit={sendRequest}>
         <input type="text" autoComplete="off" placeholder="Логин" />
-        <input type="text" autoComplete="off" placeholder="Почта" />
+        <input type="email" autoComplete="off" placeholder="Почта" />
         <input type="password" autoComplete="off" placeholder="Пароль" />
         <button className={`w-1/4 text-center mx-auto border border-blue-600 
           hover:bg-blue-400 transition delay-100 duration-300 p-3 rounded-lg`} type="submit">Войти</button>

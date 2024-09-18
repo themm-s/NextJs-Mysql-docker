@@ -21,7 +21,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (users[0]?.password_hash !== hash || users[0]?.salt !== identifer) return res.status(401).json({ error: "Invalid credentials" });
 
   if (!users) return res.status(401).json({ error: "Invalid credentials" });
-
-  res.setHeader('Set-Cookie', `salt=${identifer}; path=/; httpOnly; sameSite=strict; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toUTCString()}`);
+  const cookieOptions = `path=/; httpOnly; sameSite=strict; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toUTCString()}`;
+  res.writeHead(200, {
+    'set-cookie': [
+      `user=${encodeURIComponent(JSON.stringify(users[0]))}; ${cookieOptions}`,
+      `salt=${identifer}; ${cookieOptions}`
+    ]
+  });
   return res.status(200).json({ user: users[0] });
 }
