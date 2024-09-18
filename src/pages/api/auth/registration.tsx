@@ -1,8 +1,6 @@
 import { createHash } from "crypto";
 import connection from "../mysql";
-import { NextResponse } from "next/server";
 import { NextApiRequest, NextApiResponse } from "next";
-import { redirect } from "next/dist/server/api-utils";
 
 export default async function registration(req: NextApiRequest, res: NextApiResponse) {
   const { username, email, password } = req.body;

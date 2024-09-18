@@ -1,9 +1,11 @@
+"use client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+// TODO: Добавить контекст для передачи состояния!!! Компонент не готов
 const Registration = () => {
   const [error, setError] = useState('');
   const navigate = useRouter();
@@ -50,12 +52,6 @@ const Registration = () => {
 };
 
 export default Registration;
-
-export async function getServerSideProps() {
-  return {
-    props: {}
-  };
-}
 
 
 

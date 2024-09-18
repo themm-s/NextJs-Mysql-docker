@@ -24,11 +24,11 @@ export default function NavBar() {
     <nav className={nav.navbar}>
       <ul>
         <li>
-          <Link href="/admin">Admin</Link>
+          {/* Компоненты... */}
+          {/* <Link href="/admin">Admin</Link> */}
         </li>
       </ul>
       <div className={nav.items}>
-        <h1>{user?.is_admin ? user.username : user?.username ? 'User' : ''}</h1>
         <button onClick={user?.username ? () => fetch('/api/auth/logout') : () => navigate.push('/auth/login')}>{user?.username ? 'Logout' : 'Login'}</button>
       </div>
     </nav>

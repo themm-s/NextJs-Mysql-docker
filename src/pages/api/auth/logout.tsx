@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { redirect } from "next/dist/server/api-utils";
 
 export default async function logout(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader('Set-Cookie', 'salt=; path=/; httpOnly; sameSite=strict; expires=Thu, 01 Jan 1970 00:00:00 GMT').status(200).json({});
